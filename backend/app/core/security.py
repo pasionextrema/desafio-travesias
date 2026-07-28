@@ -1,25 +1,19 @@
 from datetime import datetime, timedelta, timezone
 
-from passlib.context import CryptContext
-from passlib.exc import PasslibHashWarning
+import bcrypt
 from jose import JWTError, jwt
-import warnings
 
 from app.core.config import get_settings
 
 settings = get_settings()
 
-warnings.filterwarnings("ignore", category=PasslibHashWarning)
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto", bcrypt__truncate_error=True)
-
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password[:72])
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    return bcrypt.checkpw(plain_password.encode(), hashed_password.encode())
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
