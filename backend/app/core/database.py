@@ -4,9 +4,10 @@ from sqlalchemy.orm import DeclarativeBase
 from app.core.config import get_settings
 
 settings = get_settings()
+db_url = settings._ensure_async_db_url()
 
 engine = create_async_engine(
-    settings.database_url,
+    db_url,
     echo=settings.app_debug,
     pool_size=20,
     max_overflow=10,

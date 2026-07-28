@@ -1,3 +1,4 @@
+import re
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
@@ -9,10 +10,25 @@ class Settings(BaseSettings):
     secret_key: str
     backend_port: int = 8000
 
-    database_url: str
-    database_url_sync: str
+    database_url: str = ""
+    database_url_sync: str = ""
 
     redis_url: str = "redis://localhost:6379/0"
+
+    def _ensure_async_db_url(self) -> str:
+        url = self.database_url or self.database_url_sync
+        if not url:
+            return ""
+        url = url.replace("postgres://", "postgresql://", 1)
+        if "+asyncpg" in url:
+            return url
+        return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
+    def _ensure_sync_db_url(self) -> str:
+        url = self.database_url_sync or self.database_url
+        if not url:
+            return ""
+        return re.sub(r"\+\w+", "", url, count=1)
 
     jwt_secret_key: str
     jwt_algorithm: str = "HS256"
