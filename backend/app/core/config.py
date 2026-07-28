@@ -32,11 +32,7 @@ class Settings(BaseSettings):
         url = url.replace("postgres://", "postgresql://", 1)
         if "+asyncpg" in url:
             return url
-        url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
-        if "sslmode" not in url:
-            separator = "&" if "?" in url else "?"
-            url = f"{url}{separator}sslmode=disable"
-        return url
+        return url.replace("postgresql://", "postgresql+asyncpg://", 1)
 
     def _ensure_sync_db_url(self) -> str:
         url = self._get_raw_db_url()
