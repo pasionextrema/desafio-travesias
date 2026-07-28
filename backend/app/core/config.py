@@ -1,3 +1,4 @@
+import os
 import re
 from pydantic_settings import BaseSettings
 from functools import lru_cache
@@ -11,21 +12,34 @@ class Settings(BaseSettings):
     backend_port: int = 8000
 
     database_url: str = ""
+    database_private_url: str = ""
     database_url_sync: str = ""
 
     redis_url: str = "redis://localhost:6379/0"
+    redis_private_url: str = ""
+
+    def _get_raw_db_url(self) -> str:
+        for key in ("DATABASE_PRIVATE_URL", "DATABASE_URL", "database_private_url", "database_url"):
+            val = os.environ.get(key, "")
+            if val and "postgres" in val:
+                return val
+        return self.database_url or self.database_private_url
 
     def _ensure_async_db_url(self) -> str:
-        url = self.database_url or self.database_url_sync
+        url = self._get_raw_db_url()
         if not url:
             return ""
         url = url.replace("postgres://", "postgresql://", 1)
         if "+asyncpg" in url:
             return url
-        return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        if "sslmode" not in url:
+            separator = "&" if "?" in url else "?"
+            url = f"{url}{separator}sslmode=disable"
+        return url
 
     def _ensure_sync_db_url(self) -> str:
-        url = self.database_url_sync or self.database_url
+        url = self._get_raw_db_url()
         if not url:
             return ""
         return re.sub(r"\+\w+", "", url, count=1)
