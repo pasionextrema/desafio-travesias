@@ -18,7 +18,7 @@
   background: url('/img/Caja_Login.webp') no-repeat center center;
   background-size: 100% 100%;
   border-radius: 16px;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2rem 3rem;
   width: 100%;
   max-width: 430px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -31,27 +31,29 @@
 
 .auth-logo {
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .auth-logo img {
-  max-width: 200px;
+  width: 100%;
+  max-width: 350px;
   height: auto;
 }
 
 .auth-header {
   text-align: center;
   margin-bottom: 1.2rem;
+  color: #e0b17f;
 }
 
 .auth-header h1 {
   font-size: 1.4rem;
-  color: var(--text);
+  color: #e0b17f;
   margin-bottom: 0.2rem;
 }
 
 .auth-header p {
-  color: var(--text-secondary);
+  color: #e0b17f;
   font-size: 0.85rem;
 }
 
@@ -63,7 +65,7 @@
 
 .auth-form label {
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: #e0b17f;
   font-weight: 500;
 }
 
@@ -71,17 +73,21 @@
 .auth-form input[type="email"],
 .auth-form input[type="password"] {
   padding: 0.65rem 0.8rem;
-  background: var(--bg);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  border: 1px solid rgba(224, 177, 127, 0.6);
   border-radius: 8px;
-  color: var(--text);
+  color: #e0b17f;
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s;
 }
 
 .auth-form input:focus {
-  border-color: var(--primary);
+  border-color: #e0b17f;
+}
+
+.auth-form input::placeholder {
+  color: rgba(224, 177, 127, 0.4);
 }
 
 .checkbox-row {
@@ -94,12 +100,19 @@
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: #e0b17f;
   font-size: 0.85rem;
 }
 
+.checkbox-row input[type="checkbox"] {
+  accent-color: #e0b17f;
+  width: 15px;
+  height: 15px;
+}
+
 .auth-links {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -108,13 +121,14 @@
 }
 
 .auth-links a {
-  color: var(--primary);
+  color: #e0b17f;
   text-decoration: none;
   font-size: 0.88rem;
 }
 
 .auth-links a:hover {
   text-decoration: underline;
+  color: #f3efaf;
 }
 
 .alert {
@@ -125,22 +139,22 @@
 }
 
 .alert-error {
-  background: rgba(225, 112, 85, 0.15);
-  color: #E17055;
+  background: rgba(225, 112, 85, 0.2);
+  color: #ffb3a0;
   border: 1px solid rgba(225, 112, 85, 0.3);
 }
 
 .alert-success {
-  background: rgba(0, 184, 148, 0.15);
-  color: #00B894;
+  background: rgba(0, 184, 148, 0.2);
+  color: #5ff5d0;
   border: 1px solid rgba(0, 184, 148, 0.3);
   text-align: center;
 }
 
 .alert-info {
-  background: rgba(9, 132, 227, 0.15);
-  color: #0984E3;
-  border: 1px solid rgba(9, 132, 227, 0.3);
+  background: rgba(224, 177, 127, 0.15);
+  color: #e0b17f;
+  border: 1px solid rgba(224, 177, 127, 0.3);
 }
 
 .btn {
@@ -162,13 +176,13 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), #0066cc);
-  color: #fff;
+  background: #f3efaf;
+  color: #1A1A2E;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+  box-shadow: 0 4px 12px rgba(243, 239, 175, 0.3);
 }
 
 .btn-secondary {
