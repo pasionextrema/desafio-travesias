@@ -7,6 +7,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
+  const [showPwd, setShowPwd] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
@@ -47,14 +48,19 @@ export default function LoginPage() {
             required
           />
           <label htmlFor="password">Contraseña</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Min 8 caracteres"
-            required
-          />
+          <div className="pwd-wrapper">
+            <input
+              id="password"
+              type={showPwd ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Min 8 caracteres"
+              required
+            />
+            <button type="button" className="pwd-toggle" onClick={() => setShowPwd(!showPwd)} tabIndex={-1}>
+              {showPwd ? '🙈' : '👁'}
+            </button>
+          </div>
           <div className="checkbox-row">
             <label>
               <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />

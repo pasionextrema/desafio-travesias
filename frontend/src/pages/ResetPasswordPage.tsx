@@ -11,6 +11,8 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [showPwd, setShowPwd] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const navigate = useNavigate()
 
   async function handleSubmit(e: FormEvent) {
@@ -56,10 +58,16 @@ export default function ResetPasswordPage() {
         </div>
         {error && <div className="alert alert-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
-          <label htmlFor="password">Nueva contraseña</label>
-          <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <label htmlFor="password">Nueva Contraseña</label>
+          <div className="pwd-wrapper">
+            <input id="password" type={showPwd ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <button type="button" className="pwd-toggle" onClick={() => setShowPwd(!showPwd)} tabIndex={-1}>{showPwd ? '🙈' : '👁'}</button>
+          </div>
           <label htmlFor="confirm">Confirmar</label>
-          <input id="confirm" type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
+          <div className="pwd-wrapper">
+            <input id="confirm" type={showConfirm ? 'text' : 'password'} value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
+            <button type="button" className="pwd-toggle" onClick={() => setShowConfirm(!showConfirm)} tabIndex={-1}>{showConfirm ? '🙈' : '👁'}</button>
+          </div>
           <button type="submit" disabled={loading || !token} className="btn btn-primary">
             {loading ? 'Guardando...' : 'Guardar contraseña'}
           </button>

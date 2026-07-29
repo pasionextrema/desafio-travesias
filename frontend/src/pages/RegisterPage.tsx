@@ -10,6 +10,8 @@ export default function RegisterPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [showPwd, setShowPwd] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const { register } = useAuth()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -74,23 +76,29 @@ export default function RegisterPage() {
             required
           />
           <label htmlFor="password">Contraseña</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Min 8 caracteres, mayus, minus, num, especial"
-            required
-          />
+          <div className="pwd-wrapper">
+            <input
+              id="password"
+              type={showPwd ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Min 8 caracteres, mayus, minus, num, especial"
+              required
+            />
+            <button type="button" className="pwd-toggle" onClick={() => setShowPwd(!showPwd)} tabIndex={-1}>{showPwd ? '🙈' : '👁'}</button>
+          </div>
           <label htmlFor="confirm">Confirmar contraseña</label>
-          <input
-            id="confirm"
-            type="password"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-            placeholder="Repite tu contraseña"
-            required
-          />
+          <div className="pwd-wrapper">
+            <input
+              id="confirm"
+              type={showConfirm ? 'text' : 'password'}
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+              placeholder="Repite tu contraseña"
+              required
+            />
+            <button type="button" className="pwd-toggle" onClick={() => setShowConfirm(!showConfirm)} tabIndex={-1}>{showConfirm ? '🙈' : '👁'}</button>
+          </div>
           <button type="submit" disabled={loading} className="btn btn-primary">
             {loading ? 'Creando...' : 'Crear Cuenta'}
           </button>
