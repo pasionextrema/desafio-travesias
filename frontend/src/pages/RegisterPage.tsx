@@ -73,7 +73,7 @@ export default function RegisterPage() {
             placeholder="tu@email.com"
             required
           />
-          <label htmlFor="password">contraseña</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             id="password"
             type="password"

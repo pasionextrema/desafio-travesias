@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
           <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
         </div>
           <div className="alert alert-success">
-            <h2>contraseña actualizada!</h2>
+            <h2>Contraseña actualizada!</h2>
             <p>Redirigiendo al login...</p>
           </div>
         </div>

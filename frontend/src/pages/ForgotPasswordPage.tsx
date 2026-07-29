@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
           <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
         </div>
         <div className="auth-header">
-          <h1>Recuperar contraseña</h1>
+          <h1>Recuperar Contraseña</h1>
           <p>Te enviaremos un enlace a tu email</p>
         </div>
         {error && <div className="alert alert-error">{error}</div>}
