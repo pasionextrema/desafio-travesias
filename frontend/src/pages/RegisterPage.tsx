@@ -50,6 +50,9 @@ export default function RegisterPage() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
+        </div>
         <div className="auth-header">
           <h1>Crear Cuenta</h1>
           <p>Unete a Desafio de Travesias</p>

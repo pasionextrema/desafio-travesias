@@ -35,7 +35,10 @@ export default function ResetPasswordPage() {
   if (done) {
     return (
       <div className="auth-page">
-        <div className="auth-card">
+      <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
+        </div>
           <div className="alert alert-success">
             <h2>Contrasena actualizada!</h2>
             <p>Redirigiendo al login...</p>

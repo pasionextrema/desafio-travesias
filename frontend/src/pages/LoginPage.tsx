@@ -29,8 +29,10 @@ export default function LoginPage() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
+        </div>
         <div className="auth-header">
-          <h1>Desafio de Travesias</h1>
           <p>Inicia sesion para continuar</p>
         </div>
         {error && <div className="alert alert-error">{error}</div>}

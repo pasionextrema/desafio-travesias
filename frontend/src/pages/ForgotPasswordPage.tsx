@@ -42,6 +42,9 @@ export default function ForgotPasswordPage() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
+        </div>
         <div className="auth-header">
           <h1>Recuperar Contrasena</h1>
           <p>Te enviaremos un enlace a tu email</p>
