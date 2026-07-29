@@ -1,9 +1,12 @@
 from datetime import datetime, date
-from pydantic import BaseModel, field_validator
+from typing import Annotated
+from uuid import UUID
+
+from pydantic import BaseModel, field_validator, BeforeValidator
 
 
 class UserProfileResponse(BaseModel):
-    id: str
+    id: Annotated[str, BeforeValidator(lambda v: str(v))]
     email: str
     username: str | None
     full_name: str | None
@@ -19,8 +22,7 @@ class UserProfileResponse(BaseModel):
     language: str
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
 
 
 class UserProfileUpdate(BaseModel):

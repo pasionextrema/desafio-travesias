@@ -1,7 +1,9 @@
 import re
 from datetime import datetime
+from uuid import UUID
+from typing import Annotated
 
-from pydantic import BaseModel, EmailStr, field_validator, model_validator
+from pydantic import BaseModel, EmailStr, field_validator, BeforeValidator
 
 
 PASSWORD_PATTERN = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]).{8,}$")
@@ -63,7 +65,7 @@ class OAuthCallbackRequest(BaseModel):
 
 
 class AuthUserResponse(BaseModel):
-    id: str
+    id: Annotated[str, BeforeValidator(lambda v: str(v))]
     email: str
     username: str | None
     full_name: str | None
@@ -71,5 +73,4 @@ class AuthUserResponse(BaseModel):
     email_verified: bool
     referral_code: str
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
