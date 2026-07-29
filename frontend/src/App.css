@@ -1,21 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
   --bg: #1A1A2E;
   --card: #2D3436;
   --primary: #0984E3;
   --accent: #FDCB6E;
   --success: #00B894;
+  --danger: #E17055;
   --text: #FFFFFF;
   --text-secondary: #B2BEC3;
-  --explorador: #4CAF50;
-  --navegante: #2196F3;
-  --constructor: #9C27B0;
-  --estrella: #FFD700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -26,19 +23,34 @@ body {
 }
 
 .app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-.header {
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.main-home {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.hero-section {
   text-align: center;
   padding: 3rem 1rem 2rem;
-  background: linear-gradient(135deg, var(--bg), var(--card));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.header h1 {
+.hero-section h1 {
   font-size: 2.5rem;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
@@ -50,65 +62,37 @@ body {
   color: var(--text-secondary);
   margin-top: 0.5rem;
   font-size: 1.1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.main {
-  flex: 1;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  width: 100%;
-}
-
-.status-card {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.status-card h2 {
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.status-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.75rem;
-}
-
-.status-item {
+.welcome-text {
+  margin-top: 1rem;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
+  justify-content: center;
+  gap: 0.3rem;
 }
 
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.role-badge {
   display: inline-block;
-}
-
-.indicator.green {
-  background: var(--success);
-  box-shadow: 0 0 6px var(--success);
-}
-
-.indicator.yellow {
-  background: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: capitalize;
 }
 
 .levels-section h2 {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .levels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
 }
 
@@ -127,17 +111,20 @@ body {
 
 .level-card h3 {
   margin: 0.5rem 0 0.25rem;
+  font-size: 1rem;
 }
 
 .level-card p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
-.footer {
+.cta-section {
   text-align: center;
-  padding: 1.5rem;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+}
+
+.btn-large {
+  padding: 0.85rem 2.5rem;
+  font-size: 1.05rem;
 }
