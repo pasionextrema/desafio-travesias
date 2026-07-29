@@ -8,6 +8,8 @@ from app.core.config import get_settings
 from app.api.v1.health import router as health_router
 from app.api.v1.auth import router as auth_router
 from app.api.v1.users import router as users_router
+from app.api.v1.trivias import router as trivias_router
+from app.api.v1.admin_trivia import router as admin_trivia_router
 
 settings = get_settings()
 
@@ -15,6 +17,7 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     import app.models.user
+    import app.models.trivia
     from app.core.database import engine, Base
     if engine is not None:
         async with engine.begin() as conn:
@@ -43,6 +46,8 @@ app.include_router(health_router, prefix="/api")
 
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(users_router, prefix="/api/v1")
+app.include_router(trivias_router, prefix="/api/v1")
+app.include_router(admin_trivia_router, prefix="/api/v1")
 
 import os
 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "app", "static")
