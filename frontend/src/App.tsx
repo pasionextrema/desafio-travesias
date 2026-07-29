@@ -6,6 +6,10 @@ import ProfilePage from './pages/ProfilePage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import VerifyEmailPage from './pages/VerifyEmailPage'
+import TriviaListPage from './pages/TriviaListPage'
+import TriviaDetailPage from './pages/TriviaDetailPage'
+import TriviaPlayerPage from './pages/TriviaPlayerPage'
+import TriviaResultsPage from './pages/TriviaResultsPage'
 import './App.css'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -18,7 +22,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function GuestRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
   if (loading) return <div className="loading">Cargando...</div>
-  if (user) return <Navigate to="/perfil" replace />
+  if (user) return <Navigate to="/trivias" replace />
   return <>{children}</>
 }
 
@@ -30,6 +34,10 @@ function AppContent() {
         <Route path="/login" element={<GuestRoute><LoginPage /></GuestRoute>} />
         <Route path="/register" element={<GuestRoute><RegisterPage /></GuestRoute>} />
         <Route path="/perfil" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path="/trivias" element={<ProtectedRoute><TriviaListPage /></ProtectedRoute>} />
+        <Route path="/trivia/:code" element={<ProtectedRoute><TriviaDetailPage /></ProtectedRoute>} />
+        <Route path="/trivia/:code/play" element={<ProtectedRoute><TriviaPlayerPage /></ProtectedRoute>} />
+        <Route path="/trivia/:code/results" element={<ProtectedRoute><TriviaResultsPage /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/verify-email" element={<VerifyEmailPage />} />
