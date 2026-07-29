@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+﻿import { useState, FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../services/api'
 import './pages.css'
@@ -29,7 +29,7 @@ export default function ForgotPasswordPage() {
         <div className="auth-card">
           <div className="alert alert-success">
             <h2>Email enviado</h2>
-            <p>Revisa tu bandeja de entrada para restablecer tu contrasena.</p>
+            <p>Revisa tu bandeja de entrada para restablecer tu contraseña.</p>
           </div>
           <div className="auth-links">
             <Link to="/login">Volver al inicio de sesion</Link>
@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
           <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
         </div>
         <div className="auth-header">
-          <h1>Recuperar Contrasena</h1>
+          <h1>Recuperar contraseña</h1>
           <p>Te enviaremos un enlace a tu email</p>
         </div>
         {error && <div className="alert alert-error">{error}</div>}

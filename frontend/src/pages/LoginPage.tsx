@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+﻿import { useState, FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import './pages.css'
@@ -46,7 +46,7 @@ export default function LoginPage() {
             placeholder="tu@email.com"
             required
           />
-          <label htmlFor="password">Contrasena</label>
+          <label htmlFor="password">contraseña</label>
           <input
             id="password"
             type="password"
@@ -66,7 +66,7 @@ export default function LoginPage() {
           </button>
         </form>
         <div className="auth-links">
-          <Link to="/forgot-password">Olvidaste tu contrasena?</Link>
+          <Link to="/forgot-password">Olvidaste tu contraseña?</Link>
           <span>|</span>
           <Link to="/register">Crear cuenta</Link>
         </div>

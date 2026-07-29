@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+﻿import { useState, FormEvent } from 'react'
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import './pages.css'
@@ -17,7 +17,7 @@ export default function ResetPasswordPage() {
     e.preventDefault()
     setError('')
     if (password !== confirm) {
-      setError('Las contrasenas no coinciden')
+      setError('Las contraseñas no coinciden')
       return
     }
     setLoading(true)
@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
           <img src="/img/Logo_DT_Login.webp" alt="Desafio de Travesias" />
         </div>
           <div className="alert alert-success">
-            <h2>Contrasena actualizada!</h2>
+            <h2>contraseña actualizada!</h2>
             <p>Redirigiendo al login...</p>
           </div>
         </div>
@@ -52,16 +52,16 @@ export default function ResetPasswordPage() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
-          <h1>Nueva Contrasena</h1>
+          <h1>Nueva contraseña</h1>
         </div>
         {error && <div className="alert alert-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
-          <label htmlFor="password">Nueva Contrasena</label>
+          <label htmlFor="password">Nueva contraseña</label>
           <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <label htmlFor="confirm">Confirmar</label>
           <input id="confirm" type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
           <button type="submit" disabled={loading || !token} className="btn btn-primary">
-            {loading ? 'Guardando...' : 'Guardar Contrasena'}
+            {loading ? 'Guardando...' : 'Guardar contraseña'}
           </button>
           {!token && <p className="text-error">Token no encontrado en la URL</p>}
         </form>

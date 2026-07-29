@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+﻿import { useState, FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import './pages.css'
@@ -19,7 +19,7 @@ export default function RegisterPage() {
     e.preventDefault()
     setError('')
     if (password !== confirm) {
-      setError('Las contrasenas no coinciden')
+      setError('Las contraseñas no coinciden')
       return
     }
     setLoading(true)
@@ -73,7 +73,7 @@ export default function RegisterPage() {
             placeholder="tu@email.com"
             required
           />
-          <label htmlFor="password">Contrasena</label>
+          <label htmlFor="password">contraseña</label>
           <input
             id="password"
             type="password"
@@ -82,13 +82,13 @@ export default function RegisterPage() {
             placeholder="Min 8 caracteres, mayus, minus, num, especial"
             required
           />
-          <label htmlFor="confirm">Confirmar Contrasena</label>
+          <label htmlFor="confirm">Confirmar contraseña</label>
           <input
             id="confirm"
             type="password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
-            placeholder="Repite tu contrasena"
+            placeholder="Repite tu contraseña"
             required
           />
           <button type="submit" disabled={loading} className="btn btn-primary">
